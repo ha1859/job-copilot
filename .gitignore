@@ -4,3 +4,4 @@ __pycache__/
 .venv/
 resume.pdf
 resume.pdf
+.DS_Store
