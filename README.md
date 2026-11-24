@@ -2,6 +2,8 @@
 
 An AI job-search assistant built with Python, Streamlit and the Claude API. Upload your resume, paste a job posting, and Job Copilot shows how well you fit, what's missing, and how to tailor your resume for that job, without ever inventing experience.
 
+**Live demo:** [job-copilot.streamlit.app](https://job-copilot-at8d5svsaw4fcejdfserzj.streamlit.app/) (password-protected to protect API credits. [Message me on LinkedIn](https://www.linkedin.com/in/hussan-asaf-36abbb428) for access)
+
 ![Job Copilot match screen](screenshots/match.png)
 
 <sub>Screenshots use a sample job posting for "Acme AI".</sub>
