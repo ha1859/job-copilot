@@ -49,5 +49,3 @@ if __name__ == "__main__":
     print("\nNice to Have:")
     for skill in result["nice_to_have"]:
         print(f"- {skill}")
-
-

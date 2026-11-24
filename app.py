@@ -38,5 +38,3 @@ if st.button("Score my fit", type="primary", use_container_width=True):
             for gap in result ["gaps"]:
                 st.markdown(f"- {gap}")
 
-
-

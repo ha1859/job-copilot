@@ -1,0 +1,34 @@
+Our mission is to create a world where software builds and improves itself.
+
+We build the platform for self-improving software development, helping the world's largest enterprise engineering teams turn their organizations into autonomous software factories. Customers including Nvidia, Blackstone, Royal Bank of Canada (RBC), Palo Alto Networks, Adobe, and T-Mobile run Factory to ship code, review PRs, run tests, and deploy continuously - getting smarter with every cycle.
+
+In 2026, we raised $200M at a $5B valuation, bringing our total funding to over $400M. We are backed by world-class investors and operators including Khosla Ventures, Sequoia, Blackstone, Ali Ghodsi (CEO of Databricks), and Frank Slootman (Former CEO of Snowflake).
+
+About The Role
+
+We're hiring Enterprise Solutions Engineers to own the technical relationship and drive revenue with our largest customers across the Central US — from first discovery through pilot, expansion, and ongoing success.
+
+This is a strategic role that goes well beyond running demos. You'll own the technical thread for customer engagements from initial evaluation through customer growth and expansion. Solutions Engineers at Factory help customers understand our platform and map customer objectives with platform capabilities, architecting solutions inside real dev environments and managing hands-on evaluations with some of the largest software teams in the world. We are a revenue-focused team of customer champions, always looking for ways to help the customer and accelerate growth.
+
+At Factory, we’re one team, and Solutions Engineers also act as a front-line product signal, translating what customers need into what we build next. Whether you’re helping a customer's SDLC pipeline go from signal to code, or helping a customer define agent Automations which keep their production code running bug-free, we’re looking for SE superstars who pave the path to a technical win and champion the value of Factory to influence our largest enterprise customers.
+
+What You Will Do and Achieve
+
+Own the technical evaluation. Lead full cycle product evaluations, design proofs of concept, and run pilots inside customer environments. Get developers actually using Factory and make sure they stick. 
+Drive revenue and growth. Turn a successful pilot into broad adoption. Identify new use cases, new teams, new workflows and workloads. Align technical objectives with revenue outcomes. 
+Architect the rollout. Help teams integrate Factory into their existing workflows — CI/CD, code review, testing, deployment. Figure out where we fit and where we need to adapt, including air-gapped and private deployments for regulated industries. 
+Be the customer's technical voice. When customers hit friction, you diagnose it. When they need something we don't have yet, you write it up clearly and push it to the product. You close the loop. 
+Feed the product engine. Translate patterns across customers into actionable feedback. You'll see what's working and what's not before anyone else. 
+
+Qualifications
+
+3-4+ years in a technical customer-facing role — Sales engineering, solutions engineering, developer advocacy, platform engineering, SRE, or similar. You’re experienced in partnering with an AE to help support the customer lifecycle. 
+You’ve led complex, technical enterprise deal cycles. You’re comfortable building champions, multi-threading across technical stakeholders, and working across the organizational stack to drive buying decisions. Your focus is always on what moves the account forward. 
+You can code and you can talk. You're comfortable reading code, writing scripts, debugging integrations, and standing in front of a room of staff engineers and holding the room. A CS degree or equivalent technical foundation is expected. 
+You understand the modern dev stack. Git workflows, CI/CD pipelines, testing frameworks, deployment strategies. You don't need to be an expert in all of them, but you can get there fast. 
+You solve problems like an engineer and communicate like a human. You can dig into a customer's environment, figure out what's broken, and explain the fix without making anyone feel stupid. 
+You're hungry. This is a fast-moving startup selling to sophisticated buyers. You move quickly, you're biased toward action, and you get energized by hard problems with real stakes. 
+
+Region
+
+Travel: Ability to travel up to 50%
