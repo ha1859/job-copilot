@@ -3,5 +3,6 @@ data/
 __pycache__/
 .venv/
 resume.pdf
-resume.pdf
+job_posting.txt
 .DS_Store
+.streamlit/secrets.toml
