@@ -1,4 +1,6 @@
+import html
 import os
+
 import streamlit as st
 
 st.set_page_config(page_title="Job Copilot", layout="wide")
@@ -24,25 +26,11 @@ from job_matcher import match_job  # noqa: E402
 from job_summarizer import summarize_job  # noqa: E402
 from resume_tailor import tailor_resume, apply_changes  # noqa: E402
 import tracker  # noqa: E402
+import ui  # noqa: E402
 
 
 # ---------- Styles ----------
-st.markdown(
-    """
-    <style>
-    .block-container {padding-top: 2rem; max-width: 1200px;}
-    .hero h1 {font-size: 2.4rem; margin-bottom: 0;}
-    .hero p {color: #6B7280; font-size: 1.05rem; margin-top: 0.25rem;}
-    .score {font-size: 3.5rem; font-weight: 800; line-height: 1;}
-    .score-label {color: #6B7280; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;}
-    .chip {display: inline-block; padding: 0.2rem 0.65rem; margin: 0.15rem; border-radius: 999px;
-           background: #EEF2FF; color: #3730A3; font-size: 0.85rem;}
-    .before {color: #6B7280; text-decoration: line-through;}
-    .after {color: #065F46; font-weight: 500;}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+ui.apply_theme()
 
 
 # ---------- Optional password (for the public demo) ----------
@@ -59,27 +47,12 @@ if password and not st.session_state.get("unlocked"):
 
 
 # ---------- Helpers ----------
-def score_color(score):
-    if score >= 75:
-        return "#059669"  # green
-    if score >= 50:
-        return "#D97706"  # amber
-    return "#DC2626"  # red
-
-
 def show_score(label, score):
-    st.markdown(
-        f"<div class='score-label'>{label}</div>"
-        f"<div class='score' style='color:{score_color(score)}'>{score}<span style='font-size:1.5rem;color:#9CA3AF'>/100</span></div>",
-        unsafe_allow_html=True,
-    )
-    st.progress(max(0, min(score, 100)) / 100)
+    ui.score(label, score)
 
 
 def chips(items):
-    if items:
-        st.markdown("".join(f"<span class='chip'>{item}</span>" for item in items),
-                    unsafe_allow_html=True)
+    ui.chips(items)
 
 
 def run_safely(message, fn, *args):
@@ -118,11 +91,7 @@ with st.sidebar:
 
 
 # ---------- Header ----------
-st.markdown(
-    "<div class='hero'><h1>Job Copilot</h1>"
-    "<p>See how well you fit a job, tailor your resume honestly, and track every application.</p></div>",
-    unsafe_allow_html=True,
-)
+ui.hero()
 
 job_posting = st.text_area(
     "Job posting",
@@ -141,7 +110,7 @@ ready = bool(resume_text) and bool(job_posting.strip())
 
 # ---------- Tab 1: Match ----------
 with match_tab:
-    if st.button("Score my fit", type="primary", use_container_width=True):
+    if st.button("Score my fit", type="primary", width="stretch"):
         if not ready:
             st.warning("Upload your resume and paste a job posting first.")
         else:
@@ -168,7 +137,7 @@ with match_tab:
 
 # ---------- Tab 2: Job summary ----------
 with summary_tab:
-    if st.button("Summarize this job", type="primary", use_container_width=True):
+    if st.button("Summarize this job", type="primary", width="stretch"):
         if not job_posting.strip():
             st.warning("Paste a job posting first.")
         else:
@@ -199,7 +168,7 @@ with tailor_tab:
         "Claude suggests rewrites of lines already on your resume, using this job's language. "
         "It can't add experience you don't have. Uncheck any change you don't want."
     )
-    if st.button("Suggest changes", type="primary", use_container_width=True):
+    if st.button("Suggest changes", type="primary", width="stretch"):
         if not ready:
             st.warning("Upload your resume and paste a job posting first.")
         else:
@@ -220,15 +189,15 @@ with tailor_tab:
         for i, change in enumerate(tailor["changes"]):
             with st.container(border=True):
                 keep = st.checkbox("Use this change", value=True, key=f"accept_{i}")
-                st.markdown(f"<div class='before'>{change['original']}</div>", unsafe_allow_html=True)
-                st.markdown(f"<div class='after'>{change['suggested']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='before'>{html.escape(change['original'])}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='after'>{html.escape(change['suggested'])}</div>", unsafe_allow_html=True)
                 if change.get("reason"):
                     st.caption(change["reason"])
                 if keep:
                     accepted.append(change)
 
         label = "change" if len(accepted) == 1 else "changes"
-        if st.button(f"Build tailored resume ({len(accepted)} {label})", use_container_width=True):
+        if st.button(f"Build tailored resume ({len(accepted)} {label})", width="stretch"):
             new_text, applied = apply_changes(resume_text, accepted)
             before = st.session_state.get("match") or run_safely(
                 "Scoring your original resume...", match_job, resume_text, job_posting
@@ -259,7 +228,7 @@ with tailor_tab:
             )
         st.text_area("Tailored resume text", tailored["text"], height=300)
         st.download_button("Download as .txt", tailored["text"], file_name="tailored_resume.txt",
-                           use_container_width=True)
+                           width="stretch")
         st.caption("Paste these lines into your real resume file and keep your original formatting.")
 
 
@@ -308,10 +277,10 @@ with tracker_tab:
                                           key=f"status_{app['id']}")
                 new_notes = c2.text_area("Notes", app["notes"], key=f"notes_{app['id']}", height=80)
                 b1, b2 = st.columns(2)
-                if b1.button("Save changes", key=f"save_{app['id']}", use_container_width=True):
+                if b1.button("Save changes", key=f"save_{app['id']}", width="stretch"):
                     tracker.update_application(app["id"], new_status, new_notes)
                     st.rerun()
-                if b2.button("Delete", key=f"delete_{app['id']}", use_container_width=True):
+                if b2.button("Delete", key=f"delete_{app['id']}", width="stretch"):
                     tracker.delete_application(app["id"])
                     st.rerun()
                 if app["tailored_resume"]:

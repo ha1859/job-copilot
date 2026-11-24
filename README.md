@@ -46,6 +46,7 @@ Job posting (pasted) ─────────────┘                 
 | File | Purpose |
 | --- | --- |
 | `app.py` | Streamlit interface with four tabs |
+| `ui.py` | The visual style: pastel panels, outlined cards, lime buttons, tiered score track |
 | `resume_reader.py` | Extracts text from a resume PDF |
 | `job_matcher.py` | Scores fit and finds gaps |
 | `job_summarizer.py` | Summarizes a job posting |
